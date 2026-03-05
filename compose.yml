@@ -1,0 +1,17 @@
+services:
+  mealizer:
+    container_name: mealizer
+    image: sebp/lighttpd:latest
+    networks:
+      - default
+    # ports:
+    #   - 80:80
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./:/var/www/localhost/htdocs
+
+networks:
+  default:
+    name: default
+    external: true
