@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@latest/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@latest/css/pico.min.css">
+</head>
+
+<body>
+  <main class="container" x-data="mealRandomizer">
+    <h1>Meal Randomizer</h1>
+    <button @click="randomizeMeal()">Generate</button>
+    <hr>
+    <h3>Your Random Meal:</h3>
+    <ul>
+      <li><strong>Carb:</strong> <span x-text="meal.carb"></span></li>
+      <li><strong>Protein:</strong> <span x-text="meal.protein"></span></li>
+      <li><strong>Vegetable:</strong> <span x-text="meal.vegetable1"></span></li>
+      <li><strong>Vegetable:</strong> <span x-text="meal.vegetable2"></span></li>
+    </ul>
+  </main>
+
+  <script>
+    function mealRandomizer() {
+      return {
+        proteins: ["Beans", "Chicken", "Seafood", "Tofu"],
+        carbs: ["Bread", "Corn", "Pasta", "Potato", "Rice"],
+        vegetables: ["Crunchy/Spring Greens", "Curcubits", "Hardy Leafy Greens", "Mushrooms", "Peppers", "Root Vegetables", "Salad Greens", "Tomato"],
+        meal: {
+          protein: '',
+          carb: '',
+          vegetable1: '',
+          vegetable2: ''
+        },
+        randomizeMeal() {
+          this.meal.protein = this.proteins[Math.floor(Math.random() * this.proteins.length)];
+          this.meal.carb = this.carbs[Math.floor(Math.random() * this.carbs.length)];
+          this.meal.vegetable1 = this.vegetables[Math.floor(Math.random() * this.vegetables.length)];
+          this.meal.vegetable2 = this.vegetables[Math.floor(Math.random() * this.vegetables.length)];
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
